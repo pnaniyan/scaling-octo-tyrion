@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Thankam - Medicine Box</title>
+        <link 	rel="stylesheet" href="styles/medicine.css" />
+        <link 	rel="stylesheet" href="styles/jquery.mobile.structure-1.3.2.min.css" />
+        <link 	rel="stylesheet" href="styles/style.css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--script type="text/javascript" src="scripts/phonegap.js"></script-->
+        <script type="text/javascript" src="scripts/jquery.js"></script>
+        <script type="text/javascript" src="scripts/jquery.mobile-1.3.2.min.js"></script>
+        <script type="text/javascript" src="scripts/application.js"></script>
+    </head>
+    <body>
+        <!-- Patients -->
+        <div data-role="page" id="searchPatient">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    MedicineBox
+                </h3>
+            </div>
+            <div data-role="content">
+                <h5 class="title-bar">Search Patient</h5>
+                <div data-role="fieldcontain">
+                    <input name="" id="patientSearch" placeholder="Search Patient" value="" type="search" />
+                </div>
+                <ul data-role="listview" data-divider-theme="b" id="patientList" data-inset="true">
+                    <li data-role="list-divider" role="heading">
+                        Choose Patient
+                    </li>
+                    <li data-theme="b" class="template">
+                        <a>
+                            <span class="list-title title"></span>
+                            <span class="list-item">Room Number : <span class="list-details-small roomnumber"></span></span>
+                            <span class="list-item">Doctor : <span class="list-details-small doctor"></span></span>
+                            <span class="list-item">Account Type : <span class="list-details-small actype"></span></span>
+                            <input type="hidden" class="patientId" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div data-theme="c" data-role="footer" data-position="fixed">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0)" data-icon="plus" class="navNew">New</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" data-icon="delete" class="navCancel">Cancel</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" data-icon="back" class="navLogout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Home -->
+        <div data-role="page" id="login">
+            <div data-theme="a" data-role="header">
+                <h2>
+                    MedicineBox
+                </h2>
+            </div>
+            <div data-role="content">
+                <h5 class="title-bar">Login</h5>
+                <p class="error error-message" style="display: none;"></p>
+                <div data-role="fieldcontain">
+                    <label for="username">
+                        Username
+                    </label>
+                    <input name="" id="username" placeholder="" value="" type="text">
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="password">
+                        Password
+                    </label>
+                    <input name="" id="password" placeholder="" value="" type="password">
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="toggleswitch1">
+                        Remember Me
+                    </label>
+                    <select name="stayLoggedIn" id="stayLoggedIn" data-theme="" data-role="slider">
+                        <option value="off">
+                            No
+                        </option>
+                        <option value="on">
+                            Yes
+                        </option>
+                    </select>
+                </div>
+                <input type="button" id="btnLogin" value ="Login" data-theme="c" data-icon="arrow-r" data-iconpos="right" />
+            </div>
+        </div>
+        <!-- Patient Details -->
+        <div data-role="page" id="patientDetail">
+            <div data-theme="a" data-role="header">
+                <input type="button" id="btnPatDetBack" value ="Back" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left" />
+                <h3>
+                    MedicineBox
+                </h3>
+            </div>
+            <div data-role="content">
+                <h5 class="title-bar">Patient Details</h5>
+                <p class="error error-message" style="display: none;"></p>
+                <div data-role="fieldcontain">
+                    <label for="patName">
+                        Patient Name
+                    </label>
+                    <input name="" id="patName" readonly="readonly" type="text" />
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="patHospitalNo">
+                        Hospital Number
+                    </label>
+                    <input name="" id="patHospitalNo" readonly="readonly" type="text" />
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="patRoom">
+                        Room Number
+                    </label>
+                    <input id="patRoom" type="text" />
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="patDoctor">
+                        Doctor
+                    </label>
+                    <select id="patDoctor"></select>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="patAcType">
+                        Account Type
+                    </label>
+                    <select id="patAcType" data-role="slider">
+                        <option value="off">
+                            Credit
+                        </option>
+                        <option value="on">
+                            Cash
+                        </option>
+                    </select>
+                </div>
+                <input type="button" id="btnPatDetNext" value ="Next" data-theme="c" data-icon="arrow-r" data-iconpos="right" />
+            </div>
+            <div data-theme="c" data-role="footer" data-position="fixed">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0)" data-icon="plus" class="navNew">New</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" data-icon="delete" class="navCancel">Cancel</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" data-icon="back" class="navLogout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <input type="hidden" id="patientDetailId" />
+        </div>
+        <!-- Requirements -->
+        <div data-role="page" id="requirements">
+            <div data-theme="a" data-role="header">
+                <input type="button" id="btnReqBack" value ="Back" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left" />
+                <h3>
+                    MedicineBox
+                </h3>
+            </div>
+            <div data-role="content">
+                <h5 class="title-bar">Medicine Requirement</h5>
+                <p class="error error-message" style="display: none;"></p>
+                <a id="patDet" data-role="button" data-theme="a">
+                    <div class="detail">
+                        <span class="list-title name"></span>
+                        <span class="list-item">Room Number : <span class="list-details-small room"></span></span>
+                        <span class="list-item">Doctor : <span class="list-details-small doctor"></span></span>
+                        <span class="list-item">Account Type : <span class="list-details-small actype"></span></span>
+                    </div>
+                </a>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true" id="medicineList">
+                    <li data-role="list-divider" role="heading">
+                        <div class="ui-bar ui-grid-a">
+                            <div class="ui-block-a" style="margin-top:10px;">Medicines</div>
+                            <div class="ui-block-b" style="text-align:right;">
+                                <input id="btnAddMedicines" type="button" data-role="button" data-mini="true" data-icon="plus" data-inline="true" data-theme="b" value="Add Medicines" />
+                            </div>
+                        </div>
+                    </li>
+                    <li data-theme="b" class="template">
+                        <a class="editItem">
+                            <div>
+                                <span class="list-title medName"></span>
+                                <span class="list-item">Quantity : <span class="list-details-small qty"></span></span>
+                            </div>
+                        </a>
+                        <a class="delItem" data-icon="delete">Delete</a>
+                        <input type="hidden" class="itemId" />
+                        <input type="hidden" class="index" />
+                    </li>
+                </ul>
+                <input type="button" id="btnReqNext" value ="Next" data-theme="c" data-icon="arrow-r" data-iconpos="right" />
+            </div>
+            <div data-theme="c" data-role="footer" data-position="fixed">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0)" data-icon="plus" class="navNew">New</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" data-icon="delete" class="navCancel">Cancel</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" data-icon="back" class="navLogout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- addMedicines -->
+        <div data-role="page" id="addMedicines">
+            <div data-theme="a" data-role="header">
+                <input type="button" id="btnMedicinesBack" value ="Back" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left" />
+                <h3>
+                    MedicineBox
+                </h3>
+            </div>
+            <div data-role="content">
+                <h5 class="title-bar">Add Medicines</h5>
+                <p class="error error-message" style="display: none;"></p>
+                <ul data-role="listview" data-divider-theme="a" data-inset="true" id="addedItems">
+                    <li data-role="list-divider" role="heading">
+                        Added Medicines
+                    </li>
+                    <li data-theme="a" class="template">
+                        <a class="editItem">
+                            <div>
+                                <span class="list-title medName"></span>
+                                <span class="list-item">Quantity : <span class="list-details-small qty"></span></span>
+                            </div>
+                        </a>
+                        <a class="delItem" data-icon="delete">Delete</a>
+                        <input type="hidden" class="itemId" />
+                        <input type="hidden" class="index" />
+                    </li>
+                </ul>
+                <div data-role="fieldcontain" id="searchMedContiner">
+                    <label for="medSearch">
+                        Search Medicine
+                    </label>
+                    <input name="" id="medSearch" placeholder="Search Medicine" value="" type="search" />
+                </div>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true" id="itemList" class="template">
+                    <li data-role="list-divider" role="heading">
+                        Choose Medicine
+                    </li>
+                    <li data-theme="b" class="template">
+                        <a class="itemName"></a>
+                        <input type="hidden" class="itemId" />
+                    </li>
+                </ul>
+                <div data-role="fieldcontain">
+                    <label for="quantity">
+                        Quantity
+                    </label>
+                    <input name="" id="quantity" type="number" />
+                </div>
+                <div class="ui-grid-a"  id="addBlock">
+                    <div class="ui-block-a">
+                        <input type="button" id="btnAddItem" data-theme="a" data-icon="plus" data-iconpos="right" value="Add" />
+                    </div>
+                    <div class="ui-block-b">
+                        <input type="button" id="btnFinishItem" data-theme="c" data-icon="refresh" data-iconpos="right" value="Finish" />
+                    </div>
+                </div>
+                <div class="ui-grid-a template" id="editBlock">
+                    <div class="ui-block-a">
+                        <input type="button" id="btnCancelItem" data-theme="a" data-icon="plus" data-iconpos="right" value="Cancel" />
+                    </div>
+                    <div class="ui-block-b">
+                        <input type="button" id="btnSaveItem" data-theme="c" data-icon="refresh" data-iconpos="right" value="Save" />
+                    </div>
+                </div>
+                <input type="hidden" id="medicineId" />
+            </div>
+            <div data-theme="c" data-role="footer" data-position="fixed">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0)" data-icon="plus" class="navNew">New</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" data-icon="delete" class="navCancel">Cancel</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" data-icon="back" class="navLogout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div data-role="page" id="summary">
+            <div data-theme="a" data-role="header">
+                <input type="button" id="btnSumBack" value ="Back" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left" />
+                <h3>
+                    MedicineBox
+                </h3>
+            </div>
+            <div data-role="content">
+                <h5 class="title-bar">Summary</h5>
+                <p class="error-message" style="display: none;"></p>
+                <h3 class="rqcode" style="display: none">
+                    Requirement Code : <span></span>
+                </h3>
+                <div class="detail" id="sumPatient">
+                    <span class="list-title name"></span>
+                    <span class="list-item">Room Number : <span class="list-details-small room"></span></span>
+                    <span class="list-item">Doctor : <span class="list-details-small doctor"></span></span>
+                    <span class="list-item">Account Type : <span class="list-details-small actype"></span></span>
+                </div>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true" id="sumMedicines">
+                    <li data-role="list-divider" role="heading">
+                        Medicines
+                    </li>
+                    <li data-theme="b" class="template">
+                        <span class="list-title itemName"></span>
+                        <span class="list-item">Quantity : <span class="list-details-small qty"></span></span>
+                    </li>
+                </ul>
+                <div id="submitBlock">
+                    <input type="button" id="btnSubmitReq" data-theme="c" data-icon="star" data-iconpos="right" value="Submit" />
+                </div>
+                <div id="newBlock" class="template">
+                    <input type="button" id="btnAddNew" data-theme="c" data-icon="plus" data-iconpos="right" value="Add New" />
+                </div>
+            </div>
+            <div data-theme="c" data-role="footer" data-position="fixed">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0)" data-icon="plus" class="navNew">New</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" data-icon="delete" class="navCancel">Cancel</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" data-icon="back" class="navLogout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,88 @@
+.error {
+    color: darkred;
+}
+
+.msg-icon {
+    display: block;
+    float: left;
+    margin-right: 5px;
+}
+
+.error span.msg-icon {
+    background-color: darkred;
+}
+
+.success {
+    color: darkgreen;
+}
+
+.success span.msg-icon {
+    background-color: darkgreen;
+}
+
+.detail {
+    font-size: 13px;
+    font-weight: normal;
+    overflow: hidden;
+}
+
+.detail span {
+    white-space: normal;
+}
+
+.detail span.list-title {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #31B7F0;
+    margin-bottom: 5px;
+    color: #0881B4;
+}
+
+.detail span.list-item {
+    margin-right: 2%;
+    font-size: 14px;
+    float: left;
+}
+
+.detail span.list-details-small {
+    font-weight: bold;
+    color: #49790B;
+}
+
+.template {
+    display: none !important;
+}
+
+.right {
+    float: right;
+}
+
+.disabled {
+    background: #EEEEEE !important;
+    cursor: not-allowed;
+}
+
+.title-bar {
+    margin: 0 0 10px 0;
+    height: 30px;
+    line-height: 30px;
+    color: #4C8600;
+    padding-left: 10px;
+    text-shadow: none;
+    border-bottom: 5px solid #67af09;
+    font-size: 18px;
+}
+
+.reqcode {
+    background: #eee;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.rqcode span{
+    color: darkgreen;
+}
