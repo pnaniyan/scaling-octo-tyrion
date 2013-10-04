@@ -644,7 +644,7 @@ var Application = {
     }
 };
 Application.Config = {
-    ajUrl: "http://192.168.0.103/MedicineAPI/",
+    ajUrl: "http://192.168.0.184/MedicineAPI/",
     stayloggedin: false,
     key: "S0xUQk1C"
 };
